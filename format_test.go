@@ -128,7 +128,7 @@ func TestHandler(t *testing.T) {
 
 				verbose := verbosityLevel > 0
 
-				_, formatter, err := RequestParserAndFormatter(format, source, nil, FormatOptions{IncludeTextSeparator: !verbose})
+				_, formatter, err := RequestParserAndFormatter(format, source, bytes.NewReader(nil), FormatOptions{IncludeTextSeparator: !verbose})
 				if err != nil {
 					t.Errorf("Failed to create parser and formatter: %v", err)
 					continue

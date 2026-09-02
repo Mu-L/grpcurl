@@ -4,6 +4,7 @@
 package main
 
 import (
+	"bytes"
 	"context"
 	"flag"
 	"fmt"
@@ -764,7 +765,7 @@ func main() {
 				// create a request to invoke an RPC
 				tmpl := grpcurl.MakeTemplate(dsc)
 				options := grpcurl.FormatOptions{EmitJSONDefaultFields: true}
-				_, formatter, err := grpcurl.RequestParserAndFormatter(grpcurl.Format(*format), descSource, nil, options)
+				_, formatter, err := grpcurl.RequestParserAndFormatter(grpcurl.Format(*format), descSource, bytes.NewReader(nil), options)
 				if err != nil {
 					fail(err, "Failed to construct formatter for %q", *format)
 				}
